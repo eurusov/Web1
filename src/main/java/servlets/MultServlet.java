@@ -1,5 +1,7 @@
 package servlets;
 
+import org.apache.commons.lang3.math.NumberUtils;
+
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,14 +20,28 @@ public class MultServlet extends HttpServlet {
 //            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
 //            response.getWriter().println(0);
 //        } else {
-        try {
+//            long val = Long.parseLong(value);
+//            response.setStatus(HttpServletResponse.SC_OK);
+//            response.getWriter().println(val * 2);
+//        }
+
+//        try {
+//            long val = Long.parseLong(value);
+//            response.setStatus(HttpServletResponse.SC_OK);
+//            response.getWriter().println(val * 2);
+//        } catch (NumberFormatException e) {
+//            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+//            response.getWriter().println(0);
+//        }
+
+        if (NumberUtils.isParsable(value)) {
             long val = Long.parseLong(value);
             response.setStatus(HttpServletResponse.SC_OK);
             response.getWriter().println(val * 2);
-        } catch (NumberFormatException e) {
+        } else {
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             response.getWriter().println(0);
         }
-//        }
+
     }
 }
